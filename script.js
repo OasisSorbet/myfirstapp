@@ -1,6 +1,7 @@
 // DOM Elements
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
+const taskCategory = document.getElementById("task-category");
 const taskList = document.getElementById("task-list");
 
 // Load tasks from localStorage
@@ -11,9 +12,10 @@ taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const taskText = taskInput.value.trim();
+    const taskCat = taskCategory.value;
     if (taskText === "") return;
 
-    const task = { text: taskText, completed: false };
+    const task = { text: taskText, completed: false, category: taskCat };
     addTaskToDOM(task);
     saveTaskToLocalStorage(task);
 
@@ -26,7 +28,7 @@ function addTaskToDOM(task) {
     if (task.completed) taskItem.classList.add("completed");
 
     const taskContent = document.createElement("span");
-    taskContent.textContent = task.text;
+    taskContent.textContent = `${task.text} (${task.category})`;
     taskItem.appendChild(taskContent);
 
     const completeButton = document.createElement("button");
@@ -78,8 +80,3 @@ function updateTaskInLocalStorage(taskText, completed) {
 }
 
 // Delete task from localStorage
-function deleteTaskFromLocalStorage(taskText) {
-    const tasks = getTasksFromLocalStorage();
-    const filteredTasks = tasks.filter((task) => task.text !== taskText);
-    localStorage.setItem("tasks", JSON.stringify(filteredTasks));
-}
