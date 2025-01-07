@@ -102,20 +102,6 @@ li button:hover {
     transform: scale(1.1);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 500px) {
-    .app-container {
-        padding: 15px;
-        width: 90%;
-    }
-
-    li {
-        font-size: 0.9em;
-    }
-
-    button {
-        font-size: 0.8em;
-    }
 /* Task History Section */
 .history-container {
     margin-top: 20px;
@@ -162,4 +148,19 @@ li button:hover {
     background: linear-gradient(145deg, #e2e8ee, #ffffff);
     transform: scale(1.05);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 500px) {
+    .app-container {
+        padding: 15px;
+        width: 90%;
+    }
+
+    li {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 0.8em;
+    }
 }
